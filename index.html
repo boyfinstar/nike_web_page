@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="unsemantic-grid-responsive-tablet.css">
+    <link rel="stylesheet" href="style.css">
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style>
+        [x-cloak] {
+          display: none;
+        }
+      </style>
+</head>
+
+<body x-data="{
+    hover: '',
+    h: 'co',
+    none: 'b',
+    img : 'img/nike_bb.png'
+}">
+    <nav class="grid-container grid-100 tablet-grid-100 mobile-grid-100">
+        <div class="grid-5 mobile-grid-100 mobile-prefix-40 tablet-push-45 tablet-grid-50"><img src="img/logo.svg"
+                alt="search" width="95px" width="40px"></div>
+        <div class="grid-55 prefix-25 mobile-grid-100 tablet-grid-75 tablet-push-5" id="nav">
+            <ul>
+                <li @mouseover="hover = 1" @mouseleave="hover = ''" :class="hover === 1 ? h : none">NEW RELEASES</li>
+
+                <li @mouseover="hover = 2" @mouseleave="hover = ''" :class="hover === 2 ? h : none">MEN</li>
+
+                <li @mouseover="hover = 3" @mouseleave="hover = ''" :class="hover === 3 ? h : none">WOMEN</li>
+                <li @mouseover="hover = 4" @mouseleave="hover = ''" :class="hover === 4 ? h : none">KIDS</li>
+                <li class="b" @mouseover="hover = 5" @mouseleave="hover = ''" :class="hover === 5 ? h : none"
+                    x-transition.duration.1000ms>CUSTOMIZE</li>
+            </ul>
+        </div>
+        <div class="grid-15 tablet-grid-25 tablet-push-5 mobile-grid-100 mobile-prefix-35" id="nav">
+            <ul class="svg">
+                <li><img src="img/search.svg" alt="search" width="16px"></li>
+                <li><img src="img/cart.svg" alt="search" width="20px"></li>
+                <li><img src="img/profile.svg" alt="search" width="20px"></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="grid-100">
+        <div class="arrow-up prefix-10 push-60"></div>
+    </div>
+
+    <div class="grid-100 line">
+
+    </div>
+    <div class="clear"></div>
+    <div class="grid-100 section">
+        <div class="grid-40 tablet-grid-100">
+            <h3 class="bas">BASE STYLE | CUSTOMIZATION</h3>
+            <h4 class="sm">SELECT SIZE:</h4>
+
+            <br>
+
+            <h4 class="sm">SELECT COLOR:</h4>
+            <div class="crl">
+                <ul>
+                    <li @click="img = 'img/nike_bb.png'" class="bb"></li>
+                    <li @click="img = 'img/nike_bg.png'" class="bg"></li>
+                    <li @click="img = 'img/nike_wp.png'" class="wp"></li>
+                    <li @click="img = 'img/nike_wr.png'" class="wr"></li>
+                    <li @click="img = 'img/nike_ww.png'" class="ww"></li>
+                </ul>
+            </div>
+            <br>
+            <button class="button">ADD TO CART</button>
+        </div>
+        <div class="grid-60 oh tablet-grid-100">
+            <div x-show="img" x-cloak x-transition:enter.scale.80
+            x-transition:leave.scale.90 style="padding: 20px;">
+                <img class="slide-left" :src="img" alt="nike shoe" width="70%">
+            </div>
+        </div>
+
+    </div>
+    <div class="clear"></div>
+
+    <div class="grid-100 tablet-grid-100 mobile-grid-100 footer">
+        <span class="footer1 prefix-25 grid-15 tablet-grid-30 tablet-prefix-10 mobile-grid-25 mobile-prefix-5">ENJOY
+            15% OFF</span>
+        <span class="footer2 grid-30 tablet-grid-45 tablet-prefix-5 mobile-grid-60 mobile-prefix-5 mobile-suffix-5">Sign
+            up to our
+            newsletter and receive 15% OFF on your first order</span>
+    </div>
+
+</body>
+
+</html>
