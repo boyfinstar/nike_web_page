@@ -9,12 +9,15 @@
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="unsemantic-grid-responsive-tablet.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="img/slide.css">
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
     <style>
         [x-cloak] {
-          display: none;
+            display: none;
         }
-      </style>
+    </style>
+
 </head>
 
 <body x-data="{
@@ -23,6 +26,7 @@
     none: 'b',
     img : 'img/nike_bb.png'
 }">
+
     <nav class="grid-container grid-100 tablet-grid-100 mobile-grid-100">
         <div class="grid-5 mobile-grid-100 mobile-prefix-40 tablet-push-45 tablet-grid-50"><img src="img/logo.svg"
                 alt="search" width="95px" width="40px"></div>
@@ -60,7 +64,18 @@
             <h3 class="bas">BASE STYLE | CUSTOMIZATION</h3>
             <h4 class="sm">SELECT SIZE:</h4>
 
-            <br>
+            <div x-ignore>
+                <div>
+                    <span id="rangeValue">0</span>
+                    <Input class="range" type="range" name "" value="8" min="4" max="12"
+                        onChange="rangeSlide(this.value)" onmousemove="rangeSlide(this.value)"></Input>
+                </div>
+                <script type="text/javascript">
+                    function rangeSlide(value) {
+                        document.getElementById('rangeValue').innerHTML = value;
+                    }
+                </script>
+            </div>
 
             <h4 class="sm">SELECT COLOR:</h4>
             <div class="crl">
@@ -72,12 +87,11 @@
                     <li @click="img = 'img/nike_ww.png'" class="ww"></li>
                 </ul>
             </div>
-            <br>
+            
             <button class="button">ADD TO CART</button>
         </div>
         <div class="grid-60 oh tablet-grid-100">
-            <div x-show="img" x-cloak x-transition:enter.scale.80
-            x-transition:leave.scale.90 style="padding: 20px;">
+            <div x-show="img" x-cloak x-transition:enter.scale.80 x-transition:leave.scale.90 style="padding: 20px;">
                 <img class="slide-left" :src="img" alt="nike shoe" width="70%">
             </div>
         </div>
